@@ -135,8 +135,13 @@ ggplot(aes(x = track_popularity, y = track_name, colour = track_name, label = tr
         axis.text.y = element_text(size =14))
 ```
 
-![](Song-Genres-Anna-Henschel_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](Song-Genres-Anna-Henschel_files/figure-gfm/unnamed-chunk-6-1.jpeg)<!-- -->
 
 Post that helped me figure out how to reorder factor levels with the
 {forcats} package:
 <https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html>
+
+Other things I learned is that RMarkdown lets me knit to “github
+document”, which “generates \[a\] GitHub compatible markdown (.md) files
+which are subsequently rendered to HTML when viewed on GitHub”. More
+here: <https://rmarkdown.rstudio.com/github_document_format.html>
