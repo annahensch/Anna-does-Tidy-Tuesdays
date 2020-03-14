@@ -4,4 +4,8 @@ Here I am collecting all my Tidy Tuesdays projects - not necessarily in the orde
 
 [2020-01-21: Song Genres](https://github.com/annahensch/Anna-does-Tidy-Tuesdays/tree/master/2020-01-21%20Song%20Genres)
 
-![image of popular songs](https://raw.githubusercontent.com/annahensch/Anna-does-Tidy-Tuesdays/master/2020-01-21%20Song%20Genres/popular-songs-tidy-tuesdays.png)
+![image of popular songs](https://raw.githubusercontent.com/annahensch/Anna-does-Tidy-Tuesdays/master/2020-01-21%20Song%20Genres/popular-songs-tidy-tuesdays.png)  
+
+[FiveThirtyEight Bechdel Data]()
+
+![image of Bechdel categories](https://github.com/annahensch/Anna-does-Tidy-Tuesdays/blob/master/Bechdel%20Data/Bechdel-categories-plot.png)
