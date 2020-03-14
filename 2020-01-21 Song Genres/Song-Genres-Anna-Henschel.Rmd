@@ -10,3 +10,58 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 2020 Week 4: Song Genres
 
+Load libraries
+```{r, message=FALSE, warning=FALSE}
+library(forcats) # deal with reordering factor levels
+library(wesanderson) # wes anderson colour palette
+library(ggthemes) # pretty ggplot themes
+library(tidyverse) # tidy data wrangling
+```
+
+Load data
+```{r}
+spotify_songs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv')
+
+glimpse(spotify_songs)
+```
+
+#### What are the most popular songs?
+
+Set up custom palette:
+```{r}
+pal <- wes_palette("BottleRocket2", 25, type = "continuous") # set up colour palette
+```
+
+Find out what the most popular songs are in the Spotify Genres data set:
+```{r}
+top_20 <- spotify_songs %>% 
+  select(track_name, track_popularity, track_artist) %>%
+  unique() %>%
+  arrange(desc(track_popularity)) %>% 
+  top_n(20, track_popularity) 
+```
+
+Show table:
+```{r}
+knitr::kable(top_20)
+```
+
+
+Plot the most popular songs:
+```{r}
+top_20 %>%
+  mutate(track_name = fct_reorder(track_name, track_popularity)) %>% # HOORAY THIS WORKS TO REORDER FACTOR LEVELS BY OTHER VARIABLE!!
+ggplot(aes(x = track_popularity, y = track_name, colour = track_name, label = track_artist)) + 
+  geom_segment(aes(x = 80, y = track_name, xend = track_popularity, yend = track_name)) +
+  geom_point(size = 8) +
+  geom_label(nudge_x = 7, 
+             hjust = "right") + 
+  scale_colour_manual(values = pal) +
+  theme_fivethirtyeight() + 
+  theme(legend.position = "none", 
+        axis.text.x = element_text(size =14), 
+        axis.text.y = element_text(size =14))
+```
+
+
+Post that helped me figure out how to reorder factor levels with the {forcats} package: https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html 
