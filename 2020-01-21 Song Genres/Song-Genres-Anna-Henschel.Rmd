@@ -3,7 +3,7 @@ title: "2020-01-21 Song Genres"
 author: Anna Henschel
 output: 
   github_document:
-    fig_width: 9
+    fig_width: 10
     fig_height: 5
     dev: jpeg
 ---
@@ -64,7 +64,10 @@ ggplot(aes(x = track_popularity, y = track_name, colour = track_name, label = tr
   theme_fivethirtyeight() + 
   theme(legend.position = "none", 
         axis.text.x = element_text(size =14), 
-        axis.text.y = element_text(size =14))
+        axis.text.y = element_text(size =14)) +
+  labs(x = 'Song Popularity', y = '',
+         title = 'The Most Popular Songs in the Spotify Genres Data Set', 
+         caption = 'Data by SpotifyR\n #TidyTuesday • @AnnaHenschel') 
 ```
 
 

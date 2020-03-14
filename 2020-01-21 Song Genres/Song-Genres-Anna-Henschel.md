@@ -132,7 +132,10 @@ ggplot(aes(x = track_popularity, y = track_name, colour = track_name, label = tr
   theme_fivethirtyeight() + 
   theme(legend.position = "none", 
         axis.text.x = element_text(size =14), 
-        axis.text.y = element_text(size =14))
+        axis.text.y = element_text(size =14)) +
+  labs(x = 'Song Popularity', y = '',
+         title = 'The Most Popular Songs in the Spotify Genres Data Set', 
+         caption = 'Data by SpotifyR\n #TidyTuesday • @AnnaHenschel') 
 ```
 
 ![](Song-Genres-Anna-Henschel_files/figure-gfm/unnamed-chunk-6-1.jpeg)<!-- -->
