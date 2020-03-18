@@ -1,0 +1,149 @@
+---
+title: "2020-03-17 The Office"
+author: Anna Henschel
+output: 
+  github_document:
+    fig_width: 10
+    fig_height: 5
+    dev: jpeg
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(schrute)
+library(gender)
+library(janitor)
+library(waffle)
+library(hrbrthemes)
+library(ggsci)
+library(wesanderson)
+library(extrafont)
+library(patchwork)
+library(tidyverse)
+```
+
+
+```{r}
+# IMDB ratings data
+office_ratings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-17/office_ratings.csv')
+# Dialogue data
+office_dialogues <- schrute::theoffice
+```
+
+```{r}
+# What gender are The Office episode directors?
+
+# separate into first and last name
+director_names <- office_dialogues %>%
+  separate(director, c("first_name", "last_name"), " ") 
+
+# save as vector
+director_names <- unique(director_names$first_name)
+
+# Predict the gender of the directors
+gender_directors <- gender(director_names)
+
+# frequency table 
+freq_gender <- gender_directors %>%
+  tabyl(gender)
+```
+
+```{r}
+
+pal <- wes_palette("Zissou1", 6, type = "continuous")
+pal
+parts <- c("Female directors" = 6, "Male directors" = 42)
+p1 <- waffle::waffle(parts, 
+               rows = 4,
+               colors = c("#F21A00", "#3B9AB2"),
+               legend_pos = "bottom", 
+               title = "Directors of The Office") +
+   theme_ipsum_rc() + 
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+p1
+```
+
+```{r}
+# What gender are The Office episode directors?
+
+# separate into first and last name
+writer_names <- office_dialogues %>%
+  separate(writer, c("first_name", "last_name"), " ") 
+
+# save as vector
+writer_names <- unique(writer_names$first_name)
+
+# Predict the gender of the directors
+gender_writers <- gender(writer_names)
+
+# frequency table 
+freq_gender_2 <- gender_writers %>%
+  tabyl(gender)
+```
+
+```{r}
+parts_2 <- c("Female writers" = 7, "Male writers" = 26)
+p2 <- waffle::waffle(parts_2, 
+               rows = 3,
+               colors = c("#F21A00", "#78B7C5"),
+               legend_pos = "bottom", 
+               title = "Writers of The Office") + 
+     theme_ipsum_rc() + 
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+p2
+```
+
+```{r}
+# What gender are The Office episode characters?
+
+# separate into first and last name
+character_names <- office_dialogues %>%
+  separate(character, c("first_name", "last_name"), " ") 
+
+character_names <- unique(character_names$first_name)
+
+# Predict the gender of the directors
+gender_characters <- gender(character_names)
+
+# frequency table 
+freq_gender_3 <- gender_characters %>%
+  tabyl(gender)
+```
+
+```{r}
+parts_3 <- c("Female characters" = 96, "Male characters" = 183)
+p3 <- waffle::waffle(parts_3, 
+               rows = 9,
+               colors = c("#F21A00", "#ABDDDE"),
+               legend_pos = "bottom", 
+               title = "Characters of The Office") +
+       theme_ipsum_rc() + 
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+p3
+```
+
+```{r}
+patchwork <- p1 / p2 / p3
+
+p4 <- patchwork + plot_annotation(caption = 'One square represents one person • Data by {schrute} • Plot by @AnnaHenschel')
+p4
+```
+
