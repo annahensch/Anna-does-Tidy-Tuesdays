@@ -1,0 +1,47 @@
+---
+title: "Traumatic Brain Injury"
+author: Anna Henschel
+date: "2020-03-24"
+output: 
+  github_document:
+    fig_width: 10
+    fig_height: 5
+    dev: jpeg
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Submission for #TidyTuesday week 13 "Traumatic Brain Injury"
+
+```{r, message=FALSE, warning=FALSE}
+library(hrbrthemes)
+library(ggsci)
+library(extrafont)
+library(patchwork)
+library(tidyverse)
+```
+
+# Load the data
+```{r}
+
+```
+
+
+Plot:
+```{r}
+# ggplot(aes(x = domgross, y = intgross, colour = as_factor(decade_code))) + 
+#   geom_jitter(alpha = .7, size = 4) +
+#   scale_x_continuous(labels = scales::dollar_format(prefix="$")) +
+#   scale_y_continuous(labels = scales::dollar_format(prefix="$")) +
+#   hrbrthemes::theme_modern_rc() +
+#   scale_color_startrek() +
+#   theme(axis.text.x = element_text(size =16), 
+#         axis.text.y = element_text(size =16)) +
+#   labs(x = '', y = '',
+#        colour = "By decade:", 
+#          title = 'Traumatic Brain Injury',
+#        caption = 'Data by CDC • #braininjuryawarenessmonth • @AnnaHenschel') 
+```
+
