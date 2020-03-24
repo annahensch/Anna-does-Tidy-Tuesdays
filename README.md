@@ -4,7 +4,7 @@ Here I am collecting all my Tidy Tuesdays projects - not necessarily in the orde
 
 [2020-03-24: Traumatic Brain Injury](https://github.com/annahensch/Anna-does-Tidy-Tuesdays/tree/master/2020-03-24%20Traumatic%20Brain%20Injury)  
 
-![image of tbi]()  
+![image of tbi](https://github.com/annahensch/Anna-does-Tidy-Tuesdays/blob/master/2020-03-24%20Traumatic%20Brain%20Injury/middle-aged-tbi-tidy-tuesday.png)  
 
 [2020-03-17: The Office data](https://github.com/annahensch/Anna-does-Tidy-Tuesdays/tree/master/2020-03-17%20The%20Office)  
 
