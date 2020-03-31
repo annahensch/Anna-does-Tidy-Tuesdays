@@ -1,0 +1,45 @@
+---
+title: "Beer Production"
+author: Anna Henschel
+date: "2020-03-31"
+output: 
+  github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Submission for #TidyTuesday week 14 "Beer Production" `r emo::ji("beer")`
+ 
+Load packages:
+```{r, message=FALSE, warning=FALSE}
+library(hrbrthemes)
+library(ggsci)
+library(scales)
+library(extrafont)
+library(patchwork)
+library(emo)
+library(Amelia)
+library(tidyverse)
+```
+
+Get the data:
+```{r}
+# Get the Data
+brewing_materials <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/brewing_materials.csv')
+beer_taxed <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/beer_taxed.csv')
+brewer_size <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/brewer_size.csv')
+beer_states <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-31/beer_states.csv')
+```
+
+Code of [@esogin](https://github.com/esogin/tidy/blob/master/tuesdays/beer/beer%20production.Rmd):
+```{r}
+type1<-brewing_materials %>% 
+    mutate(year_month=make_datetime(year,month)) %>% 
+    select(year_month,type,month_current) %>%
+    filter(!type %in% c('Total Used','Total Grain products','Total Non-Grain products')) %>% 
+    ggplot(aes(x=year_month,y=month_current,fill=type))+  geom_density(color=NA,stat='identity',position="fill") + theme_classic() + scale_fill_manual(values=c(wes_palette("Darjeeling1"),wes_palette("Darjeeling2")))  + xlab('Pounds of Materials Used') +  ylab('Time (month/year)') +  theme(legend.position ='bottom',legend.text = element_text(size=5))
+type1
+```
+
